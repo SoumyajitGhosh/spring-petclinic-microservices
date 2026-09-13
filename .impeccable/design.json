@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-13T00:00:00Z",
+  "title": "Design System: Spring PetClinic Microservices",
+  "extensions": {
+    "colorMeta": {
+      "spring-green": {
+        "role": "primary",
+        "displayName": "Spring Green",
+        "canonical": "#6db33f",
+        "tonalRamp": ["#1e3510", "#2e5218", "#3e6f21", "#4e8c29", "#6db33f", "#8ec46a", "#b3d99a", "#ddefcc"]
+      },
+      "spring-dark-green": {
+        "role": "primary-deep",
+        "displayName": "Spring Deep Green",
+        "canonical": "#5fa134",
+        "tonalRamp": ["#1a2e0e", "#284515", "#365c1c", "#447323", "#5fa134", "#7fb85d", "#a8d18c", "#d5ecc2"]
+      },
+      "bark-brown": {
+        "role": "neutral",
+        "displayName": "Bark Brown",
+        "canonical": "#34302d",
+        "tonalRamp": ["#0f0e0d", "#191715", "#221f1e", "#2b2826", "#34302d", "#5c5652", "#8a8481", "#c2bebc"]
+      },
+      "spring-grey": {
+        "role": "neutral",
+        "displayName": "Spring Grey",
+        "canonical": "#838789",
+        "tonalRamp": ["#262728", "#3b3c3d", "#515354", "#68696b", "#838789", "#a3a6a7", "#c4c6c7", "#e5e6e7"]
+      },
+      "spring-light-grey": {
+        "role": "neutral",
+        "displayName": "Spring Light Grey",
+        "canonical": "#f1f1f1",
+        "tonalRamp": ["#4a4a4a", "#696969", "#8c8c8c", "#b0b0b0", "#d4d4d4", "#e8e8e8", "#f1f1f1", "#fafafa"]
+      },
+      "signal-teal": {
+        "role": "secondary",
+        "displayName": "Signal Teal",
+        "canonical": "#075e54",
+        "tonalRamp": ["#02201d", "#03332e", "#054640", "#065951", "#075e54", "#0f8c7d", "#2fb3a1", "#7ed6c8"]
+      },
+      "signal-teal-hover": {
+        "role": "secondary-hover",
+        "displayName": "Signal Teal Bright",
+        "canonical": "#128c7e",
+        "tonalRamp": ["#052e28", "#08453c", "#0b5c50", "#0e7364", "#128c7e", "#3aa899", "#6fc4b8", "#aae0d7"]
+      }
+    },
+    "typographyMeta": {
+      "headline": { "displayName": "Headline", "purpose": "Page-level h1 titles." },
+      "title": { "displayName": "Title", "purpose": "Section h2 headings." },
+      "body": { "displayName": "Body", "purpose": "Default paragraph, form, and content text." },
+      "label": { "displayName": "Label", "purpose": "Uppercase navbar link labels." }
+    },
+    "shadows": [
+      { "name": "chat-float", "value": "0px 0px 10px rgba(0,0,0,0.1)", "purpose": "Separates the floating chat widget from the flat console beneath it. The only shadow in the system." }
+    ],
+    "motion": [
+      { "name": "ease-border", "value": "0.15s ease (border-color)", "purpose": "Button hover/focus border transition." },
+      { "name": "ease-navbar-brand", "value": "0.12s ease-in-out (opacity)", "purpose": "Navbar brand logo crossfade on hover." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Square, high-contrast primary action button used throughout the admin console.",
+      "html": "<button class=\"ds-btn-primary\">Add Owner</button>",
+      "css": ".ds-btn-primary { background: #34302d; color: #f1f1f1; border: 2px solid #6db33f; border-radius: 0; padding: 6px 12px; font-family: montserratregular, sans-serif; transition: border-color 0.15s; } .ds-btn-primary:hover, .ds-btn-primary:focus { border-color: #34302d; }"
+    },
+    {
+      "name": "Chat Send Button",
+      "kind": "button",
+      "refersTo": "chatbox-button",
+      "description": "Circular send button for the GenAI chat widget, the system's one rounded/colorful interactive surface.",
+      "html": "<button class=\"ds-btn-chat-send\" aria-label=\"Send message\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"white\"><path d=\"M2 21l21-9L2 3v7l15 2-15 2z\"/></svg></button>",
+      "css": ".ds-btn-chat-send { background: #075e54; color: #fff; border: none; border-radius: 50%; width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.15s; } .ds-btn-chat-send:hover, .ds-btn-chat-send:focus-visible { background: #128c7e; }"
+    },
+    {
+      "name": "Chat Bubble (user)",
+      "kind": "custom",
+      "refersTo": "chat-bubble-user",
+      "description": "User message bubble in the GenAI chat widget, WhatsApp-style light green with a flattened trailing corner.",
+      "html": "<div class=\"ds-bubble-user\">What vaccinations does my pet need?</div>",
+      "css": ".ds-bubble-user { max-width: 80%; padding: 10px; border-radius: 20px; border-bottom-right-radius: 0; background: #dcf8c6; margin-left: auto; text-align: right; font-size: 14px; word-wrap: break-word; }"
+    },
+    {
+      "name": "Chat Bubble (bot)",
+      "kind": "custom",
+      "refersTo": "chat-bubble-bot",
+      "description": "Assistant reply bubble in the GenAI chat widget, white with a light border and a flattened leading corner.",
+      "html": "<div class=\"ds-bubble-bot\">Here are the recommended vaccinations...</div>",
+      "css": ".ds-bubble-bot { max-width: 80%; padding: 10px; border-radius: 20px; border-bottom-left-radius: 0; background: #ffffff; border: 1px solid #e1e1e1; margin-right: auto; text-align: left; font-size: 14px; word-wrap: break-word; }"
+    },
+    {
+      "name": "Table",
+      "kind": "custom",
+      "refersTo": "table",
+      "description": "Square-cornered data table with a reversed-contrast header row, used for owner/pet/vet listings.",
+      "html": "<table class=\"ds-table\"><thead><tr><th>Name</th><th>Species</th></tr></thead><tbody><tr><td>Leo</td><td>Cat</td></tr></tbody></table>",
+      "css": ".ds-table { width: 100%; border-collapse: collapse; border: 1px solid #34302d; font-family: varela_roundregular, sans-serif; } .ds-table th { background: #3b3835; color: #f1f1f1; text-align: left; padding: 8px 12px; } .ds-table td { padding: 8px 12px; vertical-align: middle; border-top: 1px solid #34302d; }"
+    },
+    {
+      "name": "Navbar",
+      "kind": "nav",
+      "refersTo": "navbar",
+      "description": "Primary navigation bar: dark brown fill, single Spring Green top border as the sole brand mark, uppercase Montserrat links.",
+      "html": "<nav class=\"ds-navbar\"><a class=\"ds-navbar-link\" href=\"#\">Owners</a><a class=\"ds-navbar-link\" href=\"#\">Veterinarians</a></nav>",
+      "css": ".ds-navbar { background: #34302d; border-top: 4px solid #6db33f; display: flex; } .ds-navbar-link { color: #f1f1f1; text-transform: uppercase; font-family: montserratregular, sans-serif; font-size: 14px; padding: 28px 20px; text-decoration: none; transition: all 0.15s; } .ds-navbar-link:hover { color: #eeeeee; background: #6db33f; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Spring Workbench",
+    "overview": "This is a tool for developers, and it looks like one. The visual system is plain, sturdy, and brand-loyal: official Spring green and a dark brown/black text-and-chrome palette, laid over Bootstrap's default grid with every corner squared off (border-radius-base: 0). There is no attempt at glossy consumer-SaaS polish — the flatness is deliberate restraint, not an unfinished look. It exists to demonstrate a working microservices system clearly, not to sell anything. The one deliberate departure is the GenAI chat widget: a floating, rounded, softly-shadowed panel styled after familiar messaging apps (WhatsApp-green teal header, pill-shaped bubbles and buttons). It reads as a distinct, warmer surface layered on top of the flat workbench underneath — the one place in the product where a visitor is having a conversation rather than operating a console.",
+    "keyCharacteristics": [
+      "Official Spring brand green (#6db33f) used sparingly, as an accent and active/hover signal, never as a large fill.",
+      "Square corners everywhere except the one conversational surface.",
+      "No shadows on the admin chrome; the chat widget is the sole elevated layer.",
+      "Montserrat for structural/headline text, Varela Round for body text — a utilitarian pairing, not a display-driven one."
+    ],
+    "rules": [
+      { "name": "The One Accent Rule", "body": "Spring Green appears only on hover/active states, borders, and brand marks — never as a large background fill. Its scarcity is what makes it read as \"brand,\" not \"background.\"", "section": "colors" },
+      { "name": "The Contained Palette Rule", "body": "Signal Teal and its chat-bubble companions exist only inside .chatbox. They never bleed into the admin chrome, and the admin chrome's brown/green palette never appears inside the chat widget.", "section": "colors" },
+      { "name": "The Flat-Except-Chat Rule", "body": "Every surface is flat at rest. The one shadow in the entire system exists solely to separate the floating chat widget from the console beneath it — do not add shadows anywhere else.", "section": "elevation" },
+      { "name": "The Square Console, Round Conversation Rule", "body": "Corner radius is a mode signal: 0 means \"you are operating the console,\" rounded means \"you are in a conversation.\" Never mix the two within the same surface.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do keep Spring Green reserved for accents, borders, and active/hover states — never a large fill.",
+      "Do keep the chat widget's rounded, colorful language fully contained to .chatbox; it does not spread to the admin chrome.",
+      "Do use Montserrat for headings/labels and Varela Round for body text; don't introduce a third typeface."
+    ],
+    "donts": [
+      "Don't add shadows to admin-chrome surfaces (nav, tables, buttons, forms) — flatness is the system's default, not a gap to fill.",
+      "Don't round the corners of console components (buttons, tables, panels) — 0px radius is deliberate, not a missed detail.",
+      "Don't introduce the chat widget's teal/bubble palette anywhere outside the chat widget itself."
+    ]
+  }
+}

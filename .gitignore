@@ -2,6 +2,13 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
+# Frontend
+node_modules/
+
+# Claude Code: personal machine-local settings and installed compiled binaries
+.claude/settings.local.json
+**/skills/impeccable/scripts/bin/
+
 # Jenv
 .java-version
 

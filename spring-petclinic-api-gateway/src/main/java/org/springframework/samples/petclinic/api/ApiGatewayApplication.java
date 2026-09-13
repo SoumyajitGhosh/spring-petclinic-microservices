@@ -66,13 +66,15 @@ public class ApiGatewayApplication {
     private Resource indexHtml;
 
     /**
-     * workaround solution for forwarding to index.html
+     * Serves static assets, then falls back to index.html for any other GET so the
+     * React app's browser-history routes (e.g. /owners) work on a hard refresh /
+     * direct link, without masking failing /api/** calls behind an HTML response.
      * @see <a href="https://github.com/spring-projects/spring-boot/issues/9785">#9785</a>
      */
     @Bean
     RouterFunction<?> routerFunction() {
         RouterFunction router = RouterFunctions.resources("/**", new ClassPathResource("static/"))
-            .andRoute(RequestPredicates.GET("/"),
+            .andRoute(RequestPredicates.GET("/**").and(RequestPredicates.path("/api/**").negate()),
                 request -> ServerResponse.ok().contentType(MediaType.TEXT_HTML).bodyValue(indexHtml));
         return router;
     }
